@@ -1,1 +1,92 @@
 @import '~bootstrap/scss/bootstrap';
+
+html {
+  min-height: 100%; //背景色の高さを画面サイズに合わせる
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 0.7em;
+}
+
+p {
+  font-size: 1.2em;
+}
+
+ul, li {
+  list-style: none;
+}
+
+body {
+  // font-family: "Hiragino-Maru";
+  color: #000;
+  background: #fffbc3;
+  padding-top: 4em;
+  padding-bottom: 5em;
+  // background-image: image-url('orange_bg1.png');
+  // background-color:rgba(255,255,255,0.4); //背景画像の色を薄くする場合① ①②の両方が必要
+  // background-blend-mode:lighten; //背景画像の色を薄くする場合② ①②の両方が必要
+}
+
+.center {
+  text-align: center;
+}
+
+.header{
+  position: fixed;
+  background-color: #010047a8;
+  opacity: 0.85;
+  height: 4em;
+  top: 0em;
+  width: 100%;
+  z-index: 99; //一番上にくる
+  border: none;
+}
+
+#logo {
+  // font-family: '';
+  float: left;
+  margin-left: 15px;
+  font-size: 1.5em;
+  color: #fff;
+  background-color: #010047a8;
+  text-transform: uppercase;
+  letter-spacing: 0px;
+  vertical-align: middle;
+  font-weight: bold;
+}
+
+#logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav {
+  margin-right: 20px;
+  color: #fff;
+}
+
+.header-list {
+  float: left;
+  margin-left: 150px;
+}
+
+.header-list-items {
+  float: left;
+  vertical-align: middle;
+  font-size: 1.3em;
+  background-color: #010047a8;
+}
+
+
+
+.footer{
+  position: fixed;
+  bottom: 0em; /*下に固定*/
+  width: 100%;
+  font-size: 1.3em;
+  color: #fff;
+  background-color: #000;
+  opacity: 0.85;
+  line-height: 1.5em;
+
+}
