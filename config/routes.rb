@@ -4,6 +4,5 @@ Rails.application.routes.draw do
   resources :reservations
   resources :stores
   
-  get 'users/index'
   devise_for :users
 end
