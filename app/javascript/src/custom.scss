@@ -90,3 +90,24 @@ body {
 
 }
 
+// devise設定
+
+.container-login {
+  @extend .container-fluid;
+  max-width: 576px;
+  padding: 2rem;
+  .form-control {
+    margin-bottom: 20px;
+  }
+  h1 {
+    margin-bottom: 30px;
+  }
+}
+
+.mw-md {
+  max-width: 576px;
+}
+
+.mw-xl {
+  max-width: 1200px;
+}
