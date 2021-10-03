@@ -1,4 +1,6 @@
 class ReservationsController < ApplicationController
+  skip_before_action :authenticate_staff!
+
   def index
   end
 

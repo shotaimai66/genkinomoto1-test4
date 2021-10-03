@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  skip_before_action :authenticate_staff!
 
   def index
 
   end
 
   def show
-    
+
   end
 
   def new
@@ -14,6 +14,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    
+
   end
 end
