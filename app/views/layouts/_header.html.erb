@@ -3,10 +3,17 @@
     <%= link_to 'ゲンキノモト。', root_path, id: 'logo' %>
     <div class='header-list'>
       <ul class="nav header-list-items">
-        <li><%= link_to 'ホーム', root_url, class: 'nav' %></li>
-        <li><%= link_to 'ITEM1', '#', class: 'nav' %></li>
-        <li><%= link_to 'ITEM2', '#', class: 'nav' %></li>
-        <li><%= link_to 'ITEM3', '#', class: 'nav' %></li>
+        <li><%= link_to 'ホーム', root_path, class: 'nav' %></li>
+        <% if staff_signed_in? %>
+          <li><%= link_to 'スタッフページ', staffs_path, class: 'nav' %></li>
+          <li><%= link_to 'ログアウト', destroy_staff_session_path, method: :delete, class: 'nav' %></li>
+        <% elsif user_signed_in? %>
+          <li><%= link_to 'マイページ', '#', class: 'nav' %></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav' %></li>
+        <% else %>
+          <li><%= link_to 'ユーザーログイン', new_user_session_path, class: 'nav' %></li>
+          <li><%= link_to 'スタッフログイン', new_staff_session_path, class: 'nav' %></li>
+        <% end %>
       </ul>
     </div>
   </div>
