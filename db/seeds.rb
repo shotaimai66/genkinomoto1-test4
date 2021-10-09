@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+10.times do |n|
+  name = "Item-#{n+1}"
+  price = (n+1)*1000
+  description = "これは Item-#{n+1} です。"
+  stock = (n+1)
+    Item.create!(
+      name: name,
+      price: price,
+      description: description,
+      stock: stock
+    )
+end

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :reservations
   resources :stores
+  resources :items
 
   get 'users/index'
   devise_for :users, controllers: {

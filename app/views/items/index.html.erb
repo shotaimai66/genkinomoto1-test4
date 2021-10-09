@@ -1,0 +1,25 @@
+<%= link_to 'トップページに戻る', root_url, class: "btn btn-md btn-info" %>
+<div class="center container-login">
+<h1>商品一覧</h1>
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>価格(税込)</th>
+      <th>在庫数</th>
+      <th>詳細</th>
+    </tr>
+  </thead>
+  <% @items.each do |item| %>
+  <tbody>
+    <tr>
+      <td><%= link_to item.name, item_path(item) %></td>
+      <td><%= item.price %></td>
+      <td><%= item.stock %></td>
+      <td><%= item.description %></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+<%= link_to '新規商品を登録する', new_item_path, class: "btn btn-md btn-primary" %>
+</div>
