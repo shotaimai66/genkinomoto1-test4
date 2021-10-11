@@ -19,7 +19,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'will_paginate'
-gem 'bootstrap-will_paginate'
+gem 'will_paginate-bootstrap'
 gem 'faker'
 
 # devise関連のgem

@@ -6,10 +6,34 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-10.times do |n|
-  name = "Item-#{n+1}"
+
+
+20.times do |n|
+  name = "お客様#{n+1}"
+  email = "customer-#{n+1}@email.com"
+  password = "password"
+    User.create!(
+      name: name,
+      email: email,
+      password: password
+    )
+end
+
+20.times do |n|
+  name = "従業員#{n+1}"
+  email = "staff-#{n+1}@email.com"
+  password = "password"
+    Staff.create!(
+      name: name,
+      email: email,
+      password: password
+    )
+end
+
+20.times do |n|
+  name = "商品#{n+1}"
   price = (n+1)*1000
-  description = "これは Item-#{n+1} です。"
+  description = "これは 商品#{n+1} です。"
   stock = (n+1)
     Item.create!(
       name: name,
@@ -19,3 +43,7 @@
       image: File.open("app/assets/images/item1.png")
     )
 end
+
+
+
+

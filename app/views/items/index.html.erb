@@ -6,6 +6,7 @@
 
 <div class="center container-login">
 <h1>商品一覧</h1>
+<%= will_paginate @items, previous_label: ' &lt 前へ', next_label: '次へ &gt' %>
 <table>
   <thead>
     <tr>
@@ -33,4 +34,5 @@
   </tbody>
   <% end %>
 </table>
+<%= will_paginate @items, previous_label: ' &lt 前へ', next_label: '次へ &gt' %>
 </div>

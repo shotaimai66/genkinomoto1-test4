@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   skip_before_action :authenticate_user!
   skip_before_action :authenticate_staff!
   def index
-    @items = Item.all.order(id: "ASC")
+    @items = Item.paginate(page: params[:page], per_page: 5).order(id: "ASC")
   end
 
   def show
