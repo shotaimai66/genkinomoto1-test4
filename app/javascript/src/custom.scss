@@ -43,15 +43,17 @@ body {
 
 #logo {
   // font-family: '';
+  // font-size: 1.5em;
+  // color: #fff;
+  // background-color: #010047a8;
+  // text-transform: uppercase;
   float: left;
   margin-left: 15px;
-  font-size: 1.5em;
-  color: #fff;
-  background-color: #010047a8;
-  text-transform: uppercase;
   letter-spacing: 0px;
   vertical-align: middle;
   font-weight: bold;
+  width: auto;
+  height: auto;
 }
 
 #logo:hover {
@@ -95,7 +97,8 @@ body {
 .container-login {
   @extend .container-fluid;
   max-width: 576px;
-  padding: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
   .form-control {
     margin-bottom: 20px;
   }
@@ -111,3 +114,35 @@ body {
 .mw-xl {
   max-width: 1200px;
 }
+
+.round-square-top {
+  width: 260px;            /* 幅指定 */
+  height: 280px;              /* 高さ指定 */
+  border-radius: 40px;        /* 角丸指定 */
+  display:  inline-block;     /* インラインブロックする */
+  box-sizing:  border-box;    /* 崩れ防止 */
+  margin-bottom: 5px;
+  margin-right: 30px;         /* 要素の空き具合指定 */
+  padding: 2rem;
+  // font-family: "ヒラギノ丸ゴ Pro W4","Hiragino Maru Gothic Pro";    /* フォントの種類を指定 */
+  text-align:  center;
+  line-height: 1.5em;
+  color:  rgb(0, 0, 0);
+  
+}
+
+.round-square-top-1 {
+  background-color:#FF99FF;
+  font-size: 17px;
+}
+
+.round-square-top-2 {
+  background-color:#FFFFCC;
+  font-size: 17px;
+}
+
+.round-square-top-3 {
+  background-color:#99CCFF;
+  font-size: 17px;
+}
+

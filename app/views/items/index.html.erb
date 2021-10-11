@@ -1,4 +1,9 @@
-<%= link_to 'トップページに戻る', root_url, class: "btn btn-md btn-info" %>
+<ul>
+  <li><%= link_to 'トップページに戻る', root_url %></li>
+  <li><%= link_to '新規商品を登録する', new_item_path, class: "btn btn-md btn-primary" %></li>
+</ul>
+
+
 <div class="center container-login">
 <h1>商品一覧</h1>
 <table>
@@ -8,6 +13,8 @@
       <th>価格(税込)</th>
       <th>在庫数</th>
       <th>詳細</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <% @items.each do |item| %>
@@ -17,9 +24,11 @@
       <td><%= item.price %></td>
       <td><%= item.stock %></td>
       <td><%= item.description %></td>
+      <td><%= link_to '編集', edit_item_path(item), class: 'btn btn-xs btn-primary' %></td>
+      <td><%= link_to '削除', item_path(item), method: :delete, data: { confirm: '削除してもよろしいでしょうか?' }, class: "btn btn-xs btn-danger" %></td>
+      <td><%=  %></td>
     </tr>
   </tbody>
   <% end %>
 </table>
-<%= link_to '新規商品を登録する', new_item_path, class: "btn btn-md btn-primary" %>
 </div>

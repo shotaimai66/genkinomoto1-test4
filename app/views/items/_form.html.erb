@@ -1,0 +1,23 @@
+<%= form_with(model: @item, local: true) do |f| %>
+  <%#= render partial: 'shared/error_messages', locals: { object: @item } %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="form-group">
+    <%= f.label :price %>
+    <%= f.number_field :price %>
+  </div>
+  <div class="form-group">
+    <%= f.label :stock %>
+    <%= f.number_field :stock %>
+  </div>
+  <div class="form-group">
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  </div>
+  <div class="form-group">
+  <%= f.submit "商品登録", class: "btn btn-md btn-primary" %>
+  <%= link_to 'キャンセル', items_path %>
+  </div>
+<% end %>
