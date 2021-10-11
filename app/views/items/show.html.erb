@@ -4,6 +4,9 @@
 <table>
   <thead>
     <tr>
+      <th colspan="4"><%= image_tag(@item.image_url, width: 500) if @item.image? %></th>
+    </tr>
+    <tr>
       <th>商品名</th>
       <th>価格(税込)</th>
       <th>在庫数</th>

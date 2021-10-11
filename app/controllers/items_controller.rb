@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   skip_before_action :authenticate_user!
   skip_before_action :authenticate_staff!
   def index
-    @items = Item.all
+    @items = Item.all.order(id: "ASC")
   end
 
   def show
@@ -48,7 +48,7 @@ class ItemsController < ApplicationController
 
   private
     def item_params
-      params.require(:item).permit(:name, :price, :description, :stock)
+      params.require(:item).permit(:name, :price, :description, :stock, :image)
     end
     
 end

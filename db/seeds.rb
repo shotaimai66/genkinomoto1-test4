@@ -15,6 +15,7 @@
       name: name,
       price: price,
       description: description,
-      stock: stock
+      stock: stock,
+      image: File.open("app/assets/images/item1.png")
     )
 end
