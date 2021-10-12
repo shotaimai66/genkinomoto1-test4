@@ -28,6 +28,8 @@ gem "devise-i18n-views"
 
 # プロフィール画像
 gem 'carrierwave'
+# 検索機能
+gem 'ransack'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

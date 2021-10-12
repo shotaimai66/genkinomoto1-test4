@@ -1,8 +1,15 @@
 class ItemsController < ApplicationController
   skip_before_action :authenticate_user!
   skip_before_action :authenticate_staff!
+  before_action :set_q, only: [:index, :search]
+
   def index
-    @items = Item.page(params[:page]).per(5).order(id: "ASC")
+    # @items = Item.page(params[:page]).per(5).order(id: "ASC")
+    @items = @q.result.page(params[:page]).per(5).order(id: "DESC")
+  end
+
+  def search
+    @results = @q.result
   end
 
   def show
@@ -50,6 +57,10 @@ class ItemsController < ApplicationController
   private
     def item_params
       params.require(:item).permit(:name, :price, :description, :stock, :image)
+    end
+
+    def set_q
+      @q = Item.ransack(params[:q])
     end
     
 end

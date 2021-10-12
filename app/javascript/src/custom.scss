@@ -172,7 +172,41 @@ h1 {
 
 
 
-.table-item {
+.item-table {
   background-color: #fff;
-  
 }
+
+.item-image {
+  border: 1px solid #ccc;
+}
+
+.item-price-show {
+  font-size: 30px;
+  font-weight: bold;
+  color: crimson;
+}
+
+.item-name-show {
+  font-size: 30px;
+  font-weight: bold;
+  color: #000;
+}
+
+.item-search-container {
+  box-sizing: border-box;
+  position: relative;
+  border: 1px solid #999;
+  display: block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  height: 2.3em;
+  width: 260px;
+  overflow: hidden;
+  float: left;
+
+}
+
+
+
+
+

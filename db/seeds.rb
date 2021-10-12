@@ -31,16 +31,22 @@ end
 end
 
 20.times do |n|
-  name = "商品#{n+1}"
+  name = "商品#{n+1} サンプル ボディケア専用オイル 250ml 
+          ボディメンテ専用 ウェブ限定"
   price = (n+1)*1000
-  description = "これは 商品#{n+1} です。"
+  description = "これは 商品#{n+1} です。サンプル ボディケア専用オイル 250ml 
+                 ボディメンテ専用 ウェブ限定サンプル ボディケア専用オイル 250ml
+                 ボディメンテ専用 ウェブ限定サンプル ボディケア専用オイル 250ml
+                 ボディメンテ専用 ウェブ限定サンプル ボディケア専用オイル 250ml
+                 ボディメンテ専用 ウェブ限定サンプル ボディケア専用オイル 250ml
+                 ボディメンテ専用 ウェブ限定サンプル ボディケア専用オイル 250ml"
   stock = (n+1)
     Item.create!(
       name: name,
       price: price,
       description: description,
       stock: stock,
-      image: File.open("app/assets/images/item1.png")
+      image: File.open("app/assets/images/item2.jpg")
     )
 end
 

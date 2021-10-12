@@ -1,27 +1,9 @@
 <%= link_to 'ホーム', root_url %>
-<%= link_to '新規商品を登録する', new_item_path, class: "btn btn-md btn-primary" %>
+＞
+<%= link_to '商品一覧', items_path %>
 
-<div>
-<div class="center">
-  <%= search_form_for @q, url: search_items_path do |f| %>
-    <%= f.search_field :name_cont %>
-    <%= f.submit '検索' %>
-  <% end %>
-</div>
-
-<%= paginate @items %>
 <table class="table item-table">
-  <thead>
-    <tr class="center">
-      <th></th>
-      <th><%= sort_link(@q, :name, "商品名") %></th>
-      <th><%= sort_link(@q, :price, "税込価格") %></th>
-      <th><%= sort_link(@q, :stock, "在庫数") %></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <% @items.each do |item| %>
+  <% @results.each do |item| %>
   <tbody>
     <tr>
       <td><%= link_to image_tag(item.image.url, width: 200, class: "item-image"), item_path(item) if item.image? %></td>
@@ -35,8 +17,7 @@
   </tbody>
   <% end %>
 </table>
-<%= paginate @items %>
-</div>
+
 
 
 
