@@ -4,29 +4,18 @@
 </ul>
 
 
-<div class="center container-login">
-<h1>商品一覧</h1>
+<div>
+<h1 class="center">商品一覧</h1>
 <%= paginate @items %>
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>商品名</th>
-      <th>価格(税込)</th>
-      <th>在庫数</th>
-      <th>詳細</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<table class="table table-item">
   <% @items.each do |item| %>
   <tbody>
     <tr>
-      <td><%= link_to image_tag(item.image_url, width: 100), item_path(item) if item.image? %></td>
+      <td><%= link_to image_tag(item.image.url, width: 150), item_path(item) if item.image? %></td>
       <td><%= link_to item.name, item_path(item) %></td>
-      <td><%= item.price %>円(税込)</td>
-      <td><%= item.stock %></td>
-      <td><%= item.description %></td>
+      <td><%= item.price %> 円(税込)</td>
+      <td>在庫数: <%= item.stock %></td>
+    
       <td><%= link_to '編集', edit_item_path(item), class: 'btn btn-xs btn-primary' %></td>
       <td><%= link_to '削除', item_path(item), method: :delete, data: { confirm: '削除してもよろしいでしょうか?' }, class: "btn btn-xs btn-danger" %></td>
       <td><%=  %></td>
@@ -36,3 +25,7 @@
 </table>
 <%= paginate @items %>
 </div>
+
+
+
+

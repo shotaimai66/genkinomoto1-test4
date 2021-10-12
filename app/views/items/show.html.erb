@@ -1,28 +1,36 @@
 <%= link_to '商品一覧に戻る', items_path %>
-<div class="center container-login">
-<h1>商品詳細</h1>
-<table>
+<div>
+<h1 class="center">商品詳細</h1>
+<table class="table">
   <thead>
     <tr>
-      <th colspan="4"><%= image_tag(@item.image_url, width: 500) if @item.image? %></th>
-    </tr>
-    <tr>
-      <th>商品名</th>
-      <th>価格(税込)</th>
-      <th>在庫数</th>
-      <th>詳細</th>
+      <th colspan="4" class="center"><%= image_tag(@item.image.url, width: 400) if @item.image? %></th>
     </tr>
   </thead>
   
   <tbody>
-    <tr>
+    <tr class="center">
       <td><%= @item.name %></td>
-      <td><%= @item.price %></td>
-      <td><%= @item.stock %></td>
-      <td><%= @item.description %></td>
+      <td><%= @item.price %> 円(税込)</td>
+      <td>在庫数: <%= @item.stock %></td>
+      <td>
+        <%= select_tag :order_number, options_for_select([1, 2, 3, 4, 5, 6, 7, 8, 9]), include_blank: false %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3"><%= @item.description %></td>
+      <td class="center">
+        <%= link_to '#', class: "btn btn-md btn-warning" do %>
+          この商品を<br>カートに入れる
+        <% end %>
+      </td>
     </tr>
   </tbody>
 </table>
 <p></p>
-<%= link_to 'この商品をカートに入れる', '#', class: "btn btn-md btn-info" %>
+
 </div>
+
+
+
+
