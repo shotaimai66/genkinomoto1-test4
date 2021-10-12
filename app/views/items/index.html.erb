@@ -3,11 +3,10 @@
   <li><%= link_to '新規商品を登録する', new_item_path, class: "btn btn-md btn-primary" %></li>
 </ul>
 
-
 <div>
 <h1 class="center">商品一覧</h1>
 <%= paginate @items %>
-<table class="table table-item">
+<table class="table-item">
   <% @items.each do |item| %>
   <tbody>
     <tr>
