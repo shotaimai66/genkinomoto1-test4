@@ -7,29 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-
-20.times do |n|
-  name = "お客様#{n+1}"
-  email = "customer-#{n+1}@email.com"
-  password = "password"
-    User.create!(
-      name: name,
-      email: email,
-      password: password
-    )
-end
-
-20.times do |n|
-  name = "従業員#{n+1}"
-  email = "staff-#{n+1}@email.com"
-  password = "password"
-    Staff.create!(
-      name: name,
-      email: email,
-      password: password
-    )
-end
-
 20.times do |n|
   name = "商品#{n+1} サンプル ボディケア専用オイル 250ml 
           ボディメンテ専用 ウェブ限定"
