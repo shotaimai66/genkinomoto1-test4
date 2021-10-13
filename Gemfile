@@ -26,7 +26,7 @@ gem "devise"
 gem "devise-i18n"
 gem "devise-i18n-views"
 
-# プロフィール画像
+# 画像のアップロード機能
 gem 'carrierwave'
 # 検索機能
 gem 'ransack'
