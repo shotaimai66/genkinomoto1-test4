@@ -1,28 +1,46 @@
 <%= form_with(model: @item, local: true) do |f| %>
-  <%#= render partial: 'shared/error_messages', locals: { object: @item } %>
+ <%#= render partial: 'shared/error_messages', locals: { object: @item } %>
+  <table class="table item-table">
+      <tr>
+        <td rowspan="3" class="center">
+          <div class="form-group">
+            <%= f.label :image %>
+            <%= f.file_field :image %>
+          </div>
+        </td>
+        <td colspan="2">
+          <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="form-group">
+            <%= f.label :price %>
+            <%= f.number_field :price, class: "form-control" %>
+          </div>
+        </td>
+        <td>
+          <div class="form-group">
+            <%= f.label :stock %>
+            <%= f.number_field :stock, class: "form-control" %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <div class="form-group">
+            <%= f.label :description %>
+            <%= f.text_area :description, class: "form-control" %>
+          </div>
+        </td>
+      </tr>
+  </table>
   <div class="form-group">
-    <%= f.label :image %>
-    <%= f.file_field :image, id: :item_image %>
+    <%= f.submit "商品登録", class: "btn btn-md btn-primary" %>
+    <%= link_to 'キャンセル', items_path, class: "link-gray" %>
   </div>
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <div class="form-group">
-    <%= f.label :price %>
-    <%= f.number_field :price %>
-  </div>
-  <div class="form-group">
-    <%= f.label :stock %>
-    <%= f.number_field :stock %>
-  </div>
-  <div class="form-group">
-  <%= f.label :description %>
-  <%= f.text_area :description %>
-  </div>
-  <div class="form-group">
-  <%= f.submit "商品登録", class: "btn btn-md btn-primary" %>
-  <%= link_to 'キャンセル', items_path, class: "link-gray" %>
-  </div>
-<% end %>
 
+<% end %>

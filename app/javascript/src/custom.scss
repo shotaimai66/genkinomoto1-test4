@@ -175,13 +175,17 @@ h1 {
 }
 /* 表示しているページ番号のデザイン */
 .pagination > .active > a {     
-  background: #4077b1 !important;     /*背景の色を変える???*/
+  background: #4077b1 !important;     /*背景の色を変える*/
   border-radius: 20px !important;     /*角を丸くする*/
+  line-height: 1.25 !important;
+  padding: 0.5rem 0.75rem !important;
 }
 .pagination > .active > a:hover {     
   background: #93c9ff !important;     /*背景の色を変える*/
   border-radius: 20px !important;     /*角を丸くする*/
 }
+
+
 
 
 
