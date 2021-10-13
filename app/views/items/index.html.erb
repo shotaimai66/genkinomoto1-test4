@@ -1,5 +1,4 @@
 <%= link_to 'ホーム', root_url, class: "link-gray" %>
-<%= link_to '新規商品を登録する', new_item_path, class: "btn btn-md btn-primary" %>
 
 
 <div class="center">
@@ -8,6 +7,11 @@
     <%= f.submit '検索' %>
   <% end %>
 </div>
+
+<div class="right">
+  <%= link_to "新規商品登録", new_item_path, class: "btn btn-md btn-info"%>
+</div>
+
 
 <%= paginate @items %>
 <table class="table item-table">
