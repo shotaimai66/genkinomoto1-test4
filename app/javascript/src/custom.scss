@@ -32,6 +32,18 @@ body {
   text-align: center;
 }
 
+.link-black {
+  text-decoration: none;
+  color: #000;
+  
+}
+
+.link-gray {
+  text-decoration: none;
+  color: #696969;
+  
+}
+
 .header{
   position: fixed;
   background-color: #010047a8;
@@ -156,18 +168,19 @@ h1 {
 .pagination > li > a {          
    border: none;     /*枠線をなくす*/
    color: #696969;   /*文字の色を変える*/
+   
  }
 .pagination > li > a:hover {    /*ホバー時のデザイン*/ 
    border-radius: 20px;    /*角を丸くする*/
 }
 /* 表示しているページ番号のデザイン */
 .pagination > .active > a {     
-  background: #93c9ff;     /*背景の色を変える*/
-  border-radius: 20px;     /*角を丸くする*/
+  background: #4077b1 !important;     /*背景の色を変える???*/
+  border-radius: 20px !important;     /*角を丸くする*/
 }
 .pagination > .active > a:hover {     
-  background: #93c9ff;     /*背景の色を変える*/
-  border-radius: 20px;     /*角を丸くする*/
+  background: #93c9ff !important;     /*背景の色を変える*/
+  border-radius: 20px !important;     /*角を丸くする*/
 }
 
 
@@ -193,17 +206,19 @@ h1 {
 }
 
 .item-search-container {
-  box-sizing: border-box;
-  position: relative;
   border: 1px solid #999;
-  display: block;
   padding: 3px 10px;
-  border-radius: 20px;
-  height: 2.3em;
+  margin-bottom: 3px;
   width: 260px;
-  overflow: hidden;
-  float: left;
+}
 
+.sort_link {
+  color: #696969;
+}
+
+.sort_link:hover {
+  color: #999;
+  text-decoration: none;
 }
 
 

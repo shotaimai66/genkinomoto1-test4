@@ -1,8 +1,8 @@
-<%= link_to 'ホーム', root_url %>
+<%= link_to 'ホーム', root_url, class: "link-gray" %>
 ＞
-<%= link_to '商品一覧', items_path %>
+<%= link_to '商品一覧', items_path, class: "link-gray" %>
 <div>
-<table class="table">
+<table class="table item-table">
     <tr>
       <td rowspan="4" class="center">
         <%= image_tag(@item.image.url, width: 500, class: "item-image") if @item.image? %>

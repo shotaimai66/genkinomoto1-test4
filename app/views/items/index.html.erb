@@ -1,10 +1,10 @@
-<%= link_to 'ホーム', root_url %>
+<%= link_to 'ホーム', root_url, class: "link-gray" %>
 <%= link_to '新規商品を登録する', new_item_path, class: "btn btn-md btn-primary" %>
 
-<div>
+
 <div class="center">
   <%= search_form_for @q, url: search_items_path do |f| %>
-    <%= f.search_field :name_cont %>
+    <%= f.search_field :name_cont, class: "item-search-container" %>
     <%= f.submit '検索' %>
   <% end %>
 </div>
@@ -14,9 +14,9 @@
   <thead>
     <tr class="center">
       <th></th>
-      <th><%= sort_link(@q, :name, "商品名") %></th>
-      <th><%= sort_link(@q, :price, "税込価格") %></th>
-      <th><%= sort_link(@q, :stock, "在庫数") %></th>
+      <th><%= sort_link(@q, :name, "↑↓") %></th>
+      <th><%= sort_link(@q, :price, "↑↓") %></th>
+      <th><%= sort_link(@q, :stock, "↑↓") %></th>
       <th></th>
       <th></th>
     </tr>
@@ -25,7 +25,7 @@
   <tbody>
     <tr>
       <td><%= link_to image_tag(item.image.url, width: 200, class: "item-image"), item_path(item) if item.image? %></td>
-      <td><%= link_to item.name, item_path(item) %></td>
+      <td><%= link_to item.name, item_path(item), class: "link-black" %></td>
       <td><%= item.price %> 円(税込)</td>
       <td>在庫数: <%= item.stock %></td>
     
@@ -36,7 +36,7 @@
   <% end %>
 </table>
 <%= paginate @items %>
-</div>
+
 
 
 
