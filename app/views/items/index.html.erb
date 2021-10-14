@@ -1,5 +1,6 @@
 <%= link_to 'ホーム', root_url, class: "link-gray" %>
 
+<div class="container">
 
 <div class="center">
   <%= search_form_for @q, url: search_items_path do |f| %>
@@ -47,6 +48,7 @@
 </table>
 <%= paginate @items %>
 
+</div>
 
 
 
