@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
   root 'static_pages#top'
 
-  resources :reservations
-  resources :stores
-
   get 'users/index'
   devise_for :users, controllers: {
     sessions:      'users/sessions',
@@ -15,5 +12,16 @@ Rails.application.routes.draw do
     passwords:     'staffs/passwords',
     registrations: 'staffs/registrations'
   }
+
   resources :staffs, only: %i[index]
+
+  resources :reservations
+  resources :stores
+  
+  resources :items do
+    collection do
+      get 'search'
+    end
+  end
+
 end

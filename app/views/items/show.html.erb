@@ -1,0 +1,39 @@
+<%= link_to 'ホーム', root_url, class: "link-gray" %>
+＞
+<%= link_to '商品一覧', items_path, class: "link-gray" %>
+<div class="container">
+<table class="table item-table">
+    <tr>
+      <td rowspan="4" class="center">
+        <% if @item.image? %>
+          <%= image_tag(@item.image.url, width: 500, class: "item-image-border") %>
+        <% else %>
+          <%= image_tag("/no_image2.png", width: 500, class: "item-image-border") %>
+        <% end %>
+      </td>
+      <td class="center" style="font-size: 20px">
+        <%= select_tag :order_number, options_for_select([1, 2, 3, 4, 5, 6, 7, 8, 9]),
+            include_blank: false %>
+      </td>
+      <td>
+        <%= link_to '#', class: "btn btn-md btn-warning" do %>
+          この商品をカートに入れる
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="item-name-show"><%= @item.name %></td>
+    </tr>
+    <tr>
+      <td class="center item-price-show"><%= @item.price %> 円(税込)</td>
+      <td class="center">在庫数: <%= @item.stock %></td>
+    </tr>
+    <tr>
+      <td colspan="2"><%= @item.description %></td>
+    </tr>
+</table>
+</div>
+
+
+
+

@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_03_024000) do
+ActiveRecord::Schema.define(version: 2021_10_07_084750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "items", force: :cascade do |t|
+    t.integer "store_id"
+    t.string "name"
+    t.string "description"
+    t.integer "price"
+    t.integer "stock"
+    t.datetime "purchasing_date"
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "reservations", force: :cascade do |t|
     t.integer "store_id"

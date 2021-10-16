@@ -1,0 +1,41 @@
+<%= link_to 'ホーム', root_url, class: "link-gray" %>
+＞
+<%= link_to '商品一覧', items_path, class: "link-gray" %>
+
+<div class="center">
+  <%= search_form_for @q, url: search_items_path do |f| %>
+    <%= f.search_field :name_cont, class: "item-search-container" %>
+    <%= f.submit '検索' %>
+  <% end %>
+</div>
+
+<table class="table item-table">
+  <thead>
+    <tr class="center">
+      <th></th>
+      <th><%= sort_link(@q, :name, "↑↓") %></th>
+      <th><%= sort_link(@q, :price, "↑↓") %></th>
+      <th><%= sort_link(@q, :stock, "↑↓") %></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <% @results.each do |item| %>
+  <tbody>
+    <tr>
+      <td><%= link_to image_tag(item.image.url, width: 200, class: "item-image"), item_path(item) if item.image? %></td>
+      <td><%= link_to item.name, item_path(item), class: "link-black" %></td>
+      <td><%= item.price %> 円(税込)</td>
+      <td>在庫数: <%= item.stock %></td>
+    
+      <td><%= link_to '編集', edit_item_path(item), class: 'btn btn-xs btn-primary' %></td>
+      <td><%= link_to '削除', item_path(item), method: :delete, data: { confirm: '削除してもよろしいでしょうか?' }, class: "btn btn-xs btn-danger" %></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+
+
+
+
+

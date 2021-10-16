@@ -8,7 +8,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-  font-size: 1.2em;
+  font-size: 1.2rem;
 }
 
 ul, li {
@@ -18,9 +18,10 @@ ul, li {
 body {
   // font-family: "Hiragino-Maru";
   color: #000;
-  background: #fffbc3;
-  padding-top: 4em;
-  padding-bottom: 5em;
+  background: #fff;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  
   // background-image: image-url('orange_bg1.png');
   // background-color:rgba(255,255,255,0.4); //背景画像の色を薄くする場合① ①②の両方が必要
   // background-blend-mode:lighten; //背景画像の色を薄くする場合② ①②の両方が必要
@@ -28,6 +29,22 @@ body {
 
 .center {
   text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.link-black {
+  text-decoration: none;
+  color: #000;
+  
+}
+
+.link-gray {
+  text-decoration: none;
+  color: #696969;
+  
 }
 
 .header{
@@ -43,15 +60,17 @@ body {
 
 #logo {
   // font-family: '';
+  // font-size: 1.5em;
+  // color: #fff;
+  // background-color: #010047a8;
+  // text-transform: uppercase;
   float: left;
   margin-left: 15px;
-  font-size: 1.5em;
-  color: #fff;
-  background-color: #010047a8;
-  text-transform: uppercase;
   letter-spacing: 0px;
   vertical-align: middle;
   font-weight: bold;
+  width: auto;
+  height: auto;
 }
 
 #logo:hover {
@@ -87,7 +106,12 @@ body {
   background-color: #000;
   opacity: 0.85;
   line-height: 1.5em;
+  z-index: 99; //一番上にくる
 
+}
+
+h1 {
+  margin-bottom: 30px;
 }
 
 // devise設定
@@ -95,12 +119,8 @@ body {
 .container-login {
   @extend .container-fluid;
   max-width: 576px;
-  padding: 2rem;
   .form-control {
     margin-bottom: 20px;
-  }
-  h1 {
-    margin-bottom: 30px;
   }
 }
 
@@ -111,3 +131,91 @@ body {
 .mw-xl {
   max-width: 1200px;
 }
+
+.round-square-top {
+  width: 260px;            /* 幅指定 */
+  height: 280px;              /* 高さ指定 */
+  border-radius: 40px;        /* 角丸指定 */
+  display:  inline-block;     /* インラインブロックする */
+  box-sizing:  border-box;    /* 崩れ防止 */
+  margin-bottom: 5px;
+  margin-right: 30px;         /* 要素の空き具合指定 */
+  padding: 2rem;
+  // font-family: "ヒラギノ丸ゴ Pro W4","Hiragino Maru Gothic Pro";    /* フォントの種類を指定 */
+  text-align:  center;
+  line-height: 1.5em;
+  color:  rgb(0, 0, 0);
+  background-color:#c0c0c0;
+  font-size: 17px;
+  
+}
+
+/*ページネーション自体のデザイン*/
+.pagination {      /*ページネーションを中央に*/
+  justify-content: center;
+  display: flex;
+}
+.pagination > li > a {          
+   border: none;     /*枠線をなくす*/
+   color: #696969;   /*文字の色を変える*/
+   
+ }
+.pagination > li > a:hover {    /*ホバー時のデザイン*/ 
+   border-radius: 20px;    /*角を丸くする*/
+}
+/* 表示しているページ番号のデザイン */
+.pagination > .active > a {     
+  background: #4077b1 !important;     /*背景の色を変える*/
+  border-radius: 20px !important;     /*角を丸くする*/
+  line-height: 1.25 !important;
+  padding: 0.5rem 0.75rem !important;
+}
+.pagination > .active > a:hover {     
+  background: #93c9ff !important;     /*背景の色を変える*/
+  border-radius: 20px !important;     /*角を丸くする*/
+}
+
+
+.item-table {
+  background-color: #fff;
+}
+
+.item-image-border {
+  border: 1px solid #ccc;
+}
+
+.item-price-show {
+  font-size: 30px;
+  font-weight: bold;
+  color: crimson;
+}
+
+.item-name-show {
+  font-size: 30px;
+  font-weight: bold;
+  color: #000;
+}
+
+.item-search-container {
+  border: 1px solid #999;
+  padding: 3px 10px;
+  margin-bottom: 3px;
+  width: 260px;
+}
+
+
+.sort_link {
+  color: #696969;
+}
+
+.sort_link:hover {
+  color: #999;
+  text-decoration: none;
+}
+
+
+
+
+
+
+

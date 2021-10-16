@@ -18,14 +18,18 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'image_processing', '~> 1.2'
 
 gem 'bootsnap', '>= 1.4.4', require: false
-gem 'will_paginate'
-gem 'bootstrap-will_paginate'
+gem 'kaminari', :git => 'https://github.com/kaminari/kaminari'
 gem 'faker'
 
 # devise関連のgem
 gem "devise"
 gem "devise-i18n"
 gem "devise-i18n-views"
+
+# 画像のアップロード機能
+gem 'carrierwave'
+# 検索機能
+gem 'ransack'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
