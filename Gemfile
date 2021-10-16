@@ -26,6 +26,11 @@ gem "devise"
 gem "devise-i18n"
 gem "devise-i18n-views"
 
+# line関連のgem
+gem 'omniauth-line'
+gem 'dotenv-rails'
+gem "omniauth-rails_csrf_protection"
+
 # 画像のアップロード機能
 gem 'carrierwave'
 # 検索機能
