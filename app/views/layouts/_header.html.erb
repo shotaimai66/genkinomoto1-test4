@@ -8,7 +8,7 @@
           <li><%= link_to 'スタッフページ', staffs_path, class: 'nav' %></li>
           <li><%= link_to 'ログアウト', destroy_staff_session_path, method: :delete, class: 'nav' %></li>
         <% elsif user_signed_in? %>
-          <li><%= link_to 'マイページ', '#', class: 'nav' %></li>
+          <li><%= link_to 'マイページ', users_index_path, class: 'nav' %></li>
           <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav' %></li>
         <% else %>
           <li><%= link_to 'ユーザーログイン', new_user_session_path, class: 'nav' %></li>

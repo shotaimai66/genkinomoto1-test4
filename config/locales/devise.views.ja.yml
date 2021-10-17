@@ -2,11 +2,17 @@ ja:
   activerecord:
     attributes:
       user:
+        name: "お名前"
         current_password: "現在のパスワード"
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
+        kana: "ふりがな"
+        Sex: "性別"
+        male: "男性"
+        female: "女性"
+        birthday: "お誕生日"
       staff:
         current_password: "現在のパスワード"
         email: "メールアドレス"

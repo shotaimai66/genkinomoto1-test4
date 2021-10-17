@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_07_084750) do
+ActiveRecord::Schema.define(version: 2021_10_16_120156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,18 +79,22 @@ ActiveRecord::Schema.define(version: 2021_10_07_084750) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
+    t.string "name", default: "", null: false
     t.string "kana"
     t.integer "sex"
     t.datetime "birthday"
     t.string "address"
     t.datetime "enter_date"
     t.datetime "exit_date"
-    t.boolean "flag"
-    t.integer "store_id"
+    t.boolean "flag", default: false, null: false
+    t.bigint "store_id"
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["store_id"], name: "index_users_on_store_id"
   end
 
   add_foreign_key "staffs", "stores"
+  add_foreign_key "users", "stores"
 end
