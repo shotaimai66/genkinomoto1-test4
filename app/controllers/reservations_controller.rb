@@ -1,6 +1,5 @@
 class ReservationsController < ApplicationController
-  skip_before_action :authenticate_staff!, only: %i[index, new, create]
-
+  skip_before_action :authenticate_staff!, only: [:index, :new, :create]
   def index
     # start_day = Date.today
     # end_day = start_day + 6.day
