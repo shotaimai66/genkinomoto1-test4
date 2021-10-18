@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   root 'static_pages#top'
 
+  resources :reservations do
+    collection do
+      get :confirm_reservation
+    end
+  end
+  resources :stores
+
   get 'users/index'
   devise_for :users, controllers: {
     sessions:      'users/sessions',
@@ -18,7 +25,7 @@ Rails.application.routes.draw do
 
   resources :reservations
   resources :stores
-  
+
   resources :items do
     collection do
       get 'search'

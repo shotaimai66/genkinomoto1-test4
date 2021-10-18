@@ -20,6 +20,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'kaminari', :git => 'https://github.com/kaminari/kaminari'
 gem 'faker'
+gem 'enum_help'
 
 # devise関連のgem
 gem "devise"

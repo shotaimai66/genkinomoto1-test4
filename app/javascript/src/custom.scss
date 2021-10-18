@@ -21,7 +21,7 @@ body {
   background: #fff;
   padding-top: 2rem;
   padding-bottom: 4rem;
-  
+
   // background-image: image-url('orange_bg1.png');
   // background-color:rgba(255,255,255,0.4); //背景画像の色を薄くする場合① ①②の両方が必要
   // background-blend-mode:lighten; //背景画像の色を薄くする場合② ①②の両方が必要
@@ -38,13 +38,13 @@ body {
 .link-black {
   text-decoration: none;
   color: #000;
-  
+
 }
 
 .link-gray {
   text-decoration: none;
   color: #696969;
-  
+
 }
 
 .header{
@@ -147,7 +147,7 @@ h1 {
   color:  rgb(0, 0, 0);
   background-color:#c0c0c0;
   font-size: 17px;
-  
+
 }
 
 /*ページネーション自体のデザイン*/
@@ -155,22 +155,22 @@ h1 {
   justify-content: center;
   display: flex;
 }
-.pagination > li > a {          
+.pagination > li > a {
    border: none;     /*枠線をなくす*/
    color: #696969;   /*文字の色を変える*/
-   
+
  }
-.pagination > li > a:hover {    /*ホバー時のデザイン*/ 
+.pagination > li > a:hover {    /*ホバー時のデザイン*/
    border-radius: 20px;    /*角を丸くする*/
 }
 /* 表示しているページ番号のデザイン */
-.pagination > .active > a {     
+.pagination > .active > a {
   background: #4077b1 !important;     /*背景の色を変える*/
   border-radius: 20px !important;     /*角を丸くする*/
   line-height: 1.25 !important;
   padding: 0.5rem 0.75rem !important;
 }
-.pagination > .active > a:hover {     
+.pagination > .active > a:hover {
   background: #93c9ff !important;     /*背景の色を変える*/
   border-radius: 20px !important;     /*角を丸くする*/
 }
@@ -219,3 +219,32 @@ h1 {
 
 
 
+//テーブル表示
+.table-white {
+  background-color: white;
+}
+
+.table-red {
+  color: #c22162;
+  background-color: #faf1f4;
+}
+
+.table-blue {
+  color: #0c7ea9;
+  background-color: #e3f3f9;
+}
+
+.btn-reservation {
+  padding: 0.1rem 0.75rem;
+}
+
+.fc .fc-scrollgrid {
+  background-color: white;
+}
+
+#reservation_course {
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  border: 1px solid #ced4da;
+  background-color: #fff;
+}
