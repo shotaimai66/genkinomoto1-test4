@@ -11,13 +11,19 @@
           <%= image_tag("/no_image2.png", width: 500, class: "item-image-border") %>
         <% end %>
       </td>
-      <td class="center" style="font-size: 20px">
-        <%= select_tag :order_number, options_for_select([1, 2, 3, 4, 5, 6, 7, 8, 9]),
-            include_blank: false %>
-      </td>
+      <td></td>
       <td>
-        <%= link_to '#', class: "btn btn-md btn-warning" do %>
-          この商品をカートに入れる
+        <%= form_with model: @item, url: pay_items_path(@item), method: :post do |f| %>
+          <%= f.label :quantity %>
+          <%= f.select :quantity, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
+          <script
+            type="text/javascript"
+            src="https://checkout.pay.jp/"
+            class="payjp-button"
+            data-key="<%= ENV["PAYJP_TEST_PUBLIC_KEY"] %>"
+            data-name-placeholder="SHOHEI OHTANI"
+            >
+          </script>
         <% end %>
       </td>
     </tr>

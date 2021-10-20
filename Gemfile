@@ -36,6 +36,7 @@ gem "omniauth-rails_csrf_protection"
 gem 'carrierwave'
 # 検索機能
 gem 'ransack'
+gem 'payjp'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
