@@ -55,7 +55,7 @@ class ItemsController < ApplicationController
   end
 
   def pay
-    item = Item.find(params[:format])
+    item = Item.find(params[:format]) # to identify item by params[:format]
     quantity = params[:item][:quantity].to_i
     amount = item.price*quantity
     Payjp.api_key = ENV["PAYJP_TEST_SECRET_KEY"]
