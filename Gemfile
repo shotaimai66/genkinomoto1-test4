@@ -26,6 +26,7 @@ gem 'enum_help'
 gem "devise"
 gem "devise-i18n"
 gem "devise-i18n-views"
+gem 'jp_prefecture'
 
 # line関連のgem
 gem 'omniauth-line'
