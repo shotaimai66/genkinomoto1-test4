@@ -29,14 +29,17 @@ ActiveRecord::Schema.define(version: 2021_10_16_120156) do
 
   create_table "reservations", force: :cascade do |t|
     t.integer "store_id"
-    t.date "treatment_day"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.integer "status"
+    t.string "title_for_guest"
+    t.string "title_for_staff"
+    t.integer "course", default: 0
+    t.integer "status", default: 0
+    t.string "comment"
     t.integer "staff_id"
     t.integer "guest_id"
     t.datetime "reservation_time"
-    t.boolean "holiday_flag"
+    t.boolean "holiday_flag", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

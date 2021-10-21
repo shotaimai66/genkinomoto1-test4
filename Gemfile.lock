@@ -294,6 +294,7 @@ DEPENDENCIES
   devise
   devise-i18n
   devise-i18n-views
+  dotenv-rails
   enum_help
   faker
   jbuilder (~> 2.7)
