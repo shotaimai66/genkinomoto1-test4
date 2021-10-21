@@ -15,7 +15,8 @@
       <td>
         <%= form_with model: @item, url: pay_items_path(@item), method: :post do |f| %>
           <%= f.label :quantity %>
-          <%= f.select :quantity, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
+          <% range = (1..10) %>
+          <%= f.select :quantity, range %>
           <script
             type="text/javascript"
             src="https://checkout.pay.jp/"
