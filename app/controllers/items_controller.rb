@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  skip_before_action :authenticate_user!
+  #skip_before_action :authenticate_user!
   skip_before_action :authenticate_staff!
   before_action :set_q, only: [:index, :search]
 

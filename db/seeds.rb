@@ -27,6 +27,20 @@
     )
 end
 
+User.create!(
+  name: "Sample User1",
+  email: "sample-1@email.com",
+  password: "password",
+  password_confirmation: "password"
+)
+
+Staff.create!(
+  name: "Sample Staff1",
+  email: "staff-1@email.com",
+  password: "password",
+  password_confirmation: "password"
+)
+
 
 
 

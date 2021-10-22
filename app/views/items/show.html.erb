@@ -11,12 +11,11 @@
           <%= image_tag("/no_image2.png", width: 500, class: "item-image-border") %>
         <% end %>
       </td>
-      <td></td>
       <td>
         <%= form_with model: @item, url: pay_items_path(@item), method: :post do |f| %>
-          <%= f.label :quantity %>
+          <%= f.label :count %>
           <% range = (1..10) %>
-          <%= f.select :quantity, range %>
+          <%= f.select :count, range %><br>
           <script
             type="text/javascript"
             src="https://checkout.pay.jp/"
@@ -26,6 +25,8 @@
             >
           </script>
         <% end %>
+      </td>
+      <td>
       </td>
     </tr>
     <tr>

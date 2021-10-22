@@ -7,7 +7,7 @@ ja:
           id: ID
           name: 商品名
           price: 価格
-          quantity: 数量
+          count: 数量
           stock: 在庫数
           description: 詳細
           image: 画像
