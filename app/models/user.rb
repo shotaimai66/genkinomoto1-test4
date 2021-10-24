@@ -13,7 +13,6 @@ class User < ApplicationRecord
   validates :kana, length: { maximum: 50 }
   enum sex: { male: 0, female: 1, no_select: 2 }
 
-
   # line-login関連ここから
   def social_profile(provider)
     social_profiles.select { |sp| sp.provider == provider.to_s }.first
