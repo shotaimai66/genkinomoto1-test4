@@ -49,6 +49,9 @@ document.addEventListener('turbolinks:load', function() {
     allDayText: '終日',
     height: "auto",
     events: "/reservations/confirm_reservation.json",
+    eventClick: function(info){
+      // 保留
+    },
     eventDidMount: function (info) {
       if (info.event._def.title=='仮予約') {
         info.el.style.background='gray' ;

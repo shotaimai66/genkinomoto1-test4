@@ -65,6 +65,10 @@ class Reservation < ApplicationRecord
     end
   end
 
+  scope :from_today, -> () {
+    where('start_time >= ?', Time.zone.now)
+  }
+
   # #指定された配列日付のデータを抽出
   # scope :in_selected_days, -> (days) {
   #   where(arel_table[:treatment_day].in(days))
