@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   root 'static_pages#top'
 
   resources :reservations do
@@ -32,5 +33,8 @@ Rails.application.routes.draw do
       post 'pay'
     end
   end
+
+  resource :carts, only: %i[show]
+  resource :orders, only: %i[create destroy]
 
 end

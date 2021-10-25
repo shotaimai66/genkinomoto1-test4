@@ -1,6 +1,10 @@
 class User < ApplicationRecord
   # belongs_to :store
   has_many :reservations
+  
+  # A user has only one cart. User > Cart > Orders (join table) > Items
+  has_one :cart, dependent: :destroy
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable
   devise :database_authenticatable, :registerable,

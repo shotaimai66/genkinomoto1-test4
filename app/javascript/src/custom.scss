@@ -176,9 +176,7 @@ h1 {
 }
 
 
-.item-table {
-  background-color: #fff;
-}
+
 
 .item-image-border {
   border: 1px solid #ccc;
@@ -248,3 +246,31 @@ h1 {
   border: 1px solid #ced4da;
   background-color: #fff;
 }
+
+.cart-wrapper {
+  display: flex;
+  align-items: baseline; // position stickyに必要
+}
+
+.cart-content-left {
+  width: 60%;
+  margin-right: 10%;
+}
+
+.cart-content-right {
+  width: 30%;
+  align-self: baseline; // position stickyに必要
+  position: sticky;
+  top: 100px; // position stickyに必要 スクロールのときに上で止まる位置
+}
+
+
+.cart-table-left {
+
+}
+
+
+.cart-table-right {
+  border: 10px orange solid;
+}
+

@@ -1,8 +1,15 @@
-<%= link_to 'ホーム', root_url, class: "link-gray" %>
-＞
-<%= link_to '商品一覧', items_path, class: "link-gray" %>
+<%= link_to 'ホーム', root_url, class: "link-gray" %> ＞ 
+<%= link_to '商品一覧', items_path, class: "link-gray" %> ＞ 
+<%= link_to '戻る', :back, class: "link-gray" %>
+
+<div class="right">
+  <%= link_to image_tag('/cart_empty.png', width: 30), carts_path %>
+  <%= link_to 'カート', carts_path, class: "btn btn-md btn-warning" %>
+</div>
+<p></p>
+
 <div class="container">
-<table class="table item-table">
+<table class="table">
     <tr>
       <td rowspan="4" class="center">
         <% if @item.image? %>
@@ -11,11 +18,14 @@
           <%= image_tag("/no_image2.png", width: 500, class: "item-image-border") %>
         <% end %>
       </td>
+
+<%# 以下、決済機能を試験的に導入 %>
       <td>
+        <p>PAY.JP決済機能おためし</p>
         <%= form_with model: @item, url: pay_items_path(@item), method: :post do |f| %>
-          <%= f.label :count %>
+          <%= f.label :quantity %>
           <% range = (1..10) %>
-          <%= f.select :count, range %><br>
+          <%= f.select :quantity, range %><br>
           <script
             type="text/javascript"
             src="https://checkout.pay.jp/"
@@ -26,14 +36,27 @@
           </script>
         <% end %>
       </td>
+<%# 試験的決済機能ここまで %>
+
       <td>
+        <p>カートに入れる機能</p>
+        <%= form_with model: @order, url: orders_path(@order), method: :post do |f| %>
+          <%= f.label :quantity %>
+          <% range = (1..10) %>
+          <%= f.select :quantity, range %><br>
+          <%= f.fields_for @item do |i| %>
+            <%= i.hidden_field :item_id, :value => @item.id %>
+          <% end %>
+          <%= f.submit "カートにいれる", class: "btn btn-sm btn-warning" %>
+        <% end %>
       </td>
+
     </tr>
     <tr>
       <td colspan="2" class="item-name-show"><%= @item.name %></td>
     </tr>
     <tr>
-      <td class="center item-price-show"><%= @item.price %> 円(税込)</td>
+      <td class="center item-price-show"><%= @item.price %> 円 (税抜)</td>
       <td class="center">在庫数: <%= @item.stock %></td>
     </tr>
     <tr>
