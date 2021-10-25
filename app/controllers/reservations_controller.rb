@@ -46,7 +46,8 @@ class ReservationsController < ApplicationController
 
   def update_reserve
     @reservation = Reservation.find(params[:id])
-    if @reservation.update!(reservation_params)
+    if @reservation.update(reservation_params)
+      @reservation.apply_reserve!
       redirect_to confirm_reservation_reservations_url, notice: "予約を編集しました。"
     end
   end
