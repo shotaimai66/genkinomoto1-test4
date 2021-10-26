@@ -4,19 +4,19 @@ class CartsController < ApplicationController
   
   def show
     @orders = Order.all
-    @sum = 0
+    @subtotal = 0
     # @sumに合計金額を代入する
     @orders.each do |order|
-      @sum += order.item.price*order.quantity
+      @subtotal += order.item.price*order.quantity
     end
-    @tax = (@sum*0.10).round
+    @tax = (@subtotal*0.10).round
     # 5000円以上のお買い上げで送料無料
-    if @sum >= 5000 || @sum == 0
+    if @subtotal >= 5000 || @subtotal == 0
       @shipping_fee = 0
     else
       @shipping_fee = 500
     end
-    @total = @sum+@tax+@shipping_fee
+    @total = @subtotal+@tax+@shipping_fee
   end
 
   def pay
