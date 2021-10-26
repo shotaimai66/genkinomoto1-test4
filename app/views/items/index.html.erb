@@ -14,8 +14,8 @@
 </div>
 <p></p>
 <div class="right">
-  <%= link_to image_tag('/cart_empty.png', width: 30), carts_path %>
-  <%= link_to 'カート', carts_path, class: "btn btn-md btn-warning" %>
+  <%= link_to image_tag('/cart_empty.png', width: 30), carts_path(current_user) %>
+  <%= link_to 'カート', carts_path(current_user), class: "btn btn-md btn-warning" %>
 </div>
 
 

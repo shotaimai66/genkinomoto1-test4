@@ -15,14 +15,14 @@ class OrdersController < ApplicationController
     order.item = Item.find(params[:item][:item_id])
     order.save
     flash[:success] = "#{order.item.name} がカートに追加されました。"
-    redirect_to carts_path
+    redirect_to carts_path(current_user)
   end
 
   def destroy
     @order = Order.find(params[:format])
     @order.destroy
     flash[:success] = "#{@order.item.name} がカートから削除されました。"
-    redirect_to carts_path
+    redirect_to carts_path(current_user)
   end
 
   private

@@ -7,9 +7,8 @@
   <%= link_to 'カート', carts_path, class: "btn btn-md btn-warning" %>
 </div>
 <p></p>
-
 <div class="container">
-<table class="table">
+  <table class="table">
     <tr>
       <td rowspan="4" class="center">
         <% if @item.image? %>
@@ -18,30 +17,9 @@
           <%= image_tag("/no_image2.png", width: 500, class: "item-image-border") %>
         <% end %>
       </td>
-
-<%# 以下、決済機能を試験的に導入 %>
-      <td>
-        <p>PAY.JP決済機能おためし</p>
-        <%= form_with model: @item, url: pay_items_path(@item), method: :post do |f| %>
-          <%= f.label :quantity %>
-          <% range = (1..10) %>
-          <%= f.select :quantity, range %><br>
-          <script
-            type="text/javascript"
-            src="https://checkout.pay.jp/"
-            class="payjp-button"
-            data-key="<%= ENV["PAYJP_TEST_PUBLIC_KEY"] %>"
-            data-name-placeholder="SHOHEI OHTANI"
-            >
-          </script>
-        <% end %>
-      </td>
-<%# 試験的決済機能ここまで %>
-
-      <td>
-        <p>カートに入れる機能</p>
+      <td colspan="2" class="center">
         <%= form_with model: @order, url: orders_path(@order), method: :post do |f| %>
-          <%= f.label :quantity %>
+          <%= f.label "数量:" %>
           <% range = (1..10) %>
           <%= f.select :quantity, range %><br>
           <%= f.fields_for @item do |i| %>
@@ -50,7 +28,6 @@
           <%= f.submit "カートにいれる", class: "btn btn-sm btn-warning" %>
         <% end %>
       </td>
-
     </tr>
     <tr>
       <td colspan="2" class="item-name-show"><%= @item.name %></td>
@@ -62,7 +39,7 @@
     <tr>
       <td colspan="2"><%= @item.description %></td>
     </tr>
-</table>
+  </table>
 </div>
 
 

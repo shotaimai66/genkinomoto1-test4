@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
     
     if @item = Item.create(item_params)
       flash[:success] = "#{@item} の登録に成功しました"
-    redirect_to items_path
+    redirect_to items_path(current_user)
     else
       flash[:danger] = "#{@item} の作成に問題がありました"
       render :new
@@ -41,8 +41,8 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      flash[:success] = "#{@item} の情報を更新しました。"
-      redirect_to items_path
+      flash[:success] = "#{@item.name} の情報を更新しました。"
+      redirect_to items_path(current_user)
     else
       render :edit
     end
@@ -51,14 +51,14 @@ class ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-    flash[:success] = "#{@item} を削除しました。"
-    redirect_to items_path
+    flash[:success] = "#{@item.name} を削除しました。"
+    redirect_to items_path(current_user)
   end
 
   # 以下、決済機能を試験的に導入
   def pay
     item = Item.find(params[:format]) # to identify item by params[:format]
-    quantity = params[:item][:count].to_i
+    quantity = params[:item][:quantity].to_i
     amount = item.price*quantity
 
     Payjp.api_key = ENV["PAYJP_TEST_SECRET_KEY"]

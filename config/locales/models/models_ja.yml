@@ -16,9 +16,3 @@ ja:
           updated_at: 更新日
         order:
           quantity: 数量
-          sub_total: 小計(税抜)
-          shipping_fee: 送料
-          handling_fee: 手数料
-          tax: 消費税
-          grand_total: 合計(税込)
-          created_at: 注文日

@@ -48,38 +48,30 @@
 
 <%# 以下、フォームをレイアウトのみ仮で設置、送信はできません %>
   <div class="cart-content-right">
-    <%= form_with model: @cart, url: '#', method: :post do |f| %>
-      <table class="table cart-table-right">
-        <tr>
-          <td>小計</td>
-          <td class="right"> <%= @subtotal %> 円</td>
-        </tr>
-        <tr>
-          <td>消費税 (10%)</td>
-          <td class="right"> <%= @tax %> 円</td> 
-        </tr>
-        <tr>
-          <td>送料</td>
-          <td class="right"><%= @shipping_fee %> 円</td>
-        </tr>
-        <tr>
-          <td>合計</td>
-          <td class="right"> <%= @total %> 円 (税込)</td>
-        </tr>
-        <tr>
-          <td colspan="2" class="center">
-            <script
-              type="text/javascript"
-              src="https://checkout.pay.jp/"
-              class="payjp-button"
-              data-key="<%= ENV["PAYJP_TEST_PUBLIC_KEY"] %>"
-              data-name-placeholder="SHOHEI OHTANI"
-              >
-            </script>
-          </td>
-        </tr>
-      </table>
-    <% end %>
+    <table class="table cart-table-right">
+      <tr><td>小計</td><td class="right"> <%= @subtotal %> 円</td></tr>
+      <tr><td>消費税 (10%)</td><td class="right"> <%= @tax %> 円</td></tr>
+      <tr><td>送料</td><td class="right"><%= @shipping_fee %> 円</td></tr>
+      <tr><td>合計</td><td class="right"> <%= @total %> 円 (税込)</td></tr>
+      <tr>
+        <td colspan="2" class="center">
+          <% if @total == 0 %>
+            <button class="btn btn-sm btn-secondary">カートは空です</button>
+          <% else %>
+            <%= form_with model: @payment, url: payments_path(@payment), method: :post do |f| %>
+              <script
+                type="text/javascript"
+                src="https://checkout.pay.jp/"
+                class="payjp-button"
+                data-key="<%= ENV["PAYJP_TEST_PUBLIC_KEY"] %>"
+                data-name-placeholder="SHOHEI OHTANI"
+                >
+              </script>
+            <% end %>
+        <% end %>
+        </td>
+      </tr>
+    </table>
     <p class="center">お買い上げ5000円以上で送料無料</p>
   </div>
 <%# 仮のフォームここまで %>

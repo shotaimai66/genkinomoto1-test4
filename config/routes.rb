@@ -30,11 +30,13 @@ Rails.application.routes.draw do
   resources :items do
     collection do
       get 'search'
-      post 'pay'
+      post 'pay' # 試験的支払い機能です
     end
   end
 
   resource :carts, only: %i[show]
   resource :orders, only: %i[create destroy]
+
+  post 'payments', to: 'payments#pay'
 
 end
