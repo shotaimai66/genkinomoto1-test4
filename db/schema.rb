@@ -38,11 +38,6 @@ ActiveRecord::Schema.define(version: 2021_10_23_064207) do
     t.bigint "item_id", null: false
     t.bigint "cart_id", null: false
     t.integer "quantity"
-    t.integer "sub_total"
-    t.integer "shipping_fee"
-    t.integer "handling_fee"
-    t.integer "tax"
-    t.integer "grand_total"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["cart_id"], name: "index_orders_on_cart_id"

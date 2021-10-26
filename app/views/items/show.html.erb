@@ -45,7 +45,7 @@
           <% range = (1..10) %>
           <%= f.select :quantity, range %><br>
           <%= f.fields_for @item do |i| %>
-            <%= i.hidden_field :item_id, :value => @item.id %>
+            <%= i.hidden_field :item_id, value: @item.id %>
           <% end %>
           <%= f.submit "カートにいれる", class: "btn btn-sm btn-warning" %>
         <% end %>

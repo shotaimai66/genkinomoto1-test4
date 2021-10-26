@@ -9,30 +9,41 @@
 <div class="cart-wrapper">
 
   <div class="cart-content-left">
-    <table class="table cart-table-left">
-      <% @orders.each do |order| %>
-      <tr>
-        <td rowspan="3">
-          <% item = Item.find(order.item_id) %>
-          <% if item.image? %>
-            <%= link_to image_tag(item.image.url, width: 200, class: "item-image-border"), item_path(item) %>
-          <% else %>
-            <%= link_to image_tag("/no_image2.png", width: 200, class: "item-image-border"), item_path(item) %>
-          <% end %>
-        </td>
-        <td colspan="2"><%= link_to item.name, item_path(item), class: "link-black" %></td>
-      </tr>
-      <tr>
-        <td colspan="2"><%= item.price %> 円 (税抜)</td>
-      </tr>
-      <tr>
-        <td>数量: <%= order.quantity %></td>
-        <td>
-          <%= link_to "削除", orders_path(order), method: :delete,  data: { confirm: '削除してもよろしいでしょうか?' }, class: "btn btn-sm btn-secondary" %>
-        </td>
-      </tr>
-      <% end %>
-    </table>
+    <% if !@orders.present? %>
+      <table class="table cart-table-left">
+        <tr>
+          <td>
+            <p><%= current_user.name %> 様のカートは空です。</p>
+          </td>
+        </tr>
+      </table>
+    <% else %>
+      <table class="table cart-table-left">
+        <% @orders.each do |order| %>
+        <tr>
+          <td rowspan="3">
+            <% item = Item.find(order.item_id) %>
+            <% if item.image? %>
+              <%= link_to image_tag(item.image.url, width: 200, class: "item-image-border"), item_path(item) %>
+            <% else %>
+              <%= link_to image_tag("/no_image2.png", width: 200, class: "item-image-border"), item_path(item) %>
+            <% end %>
+          </td>
+          <td colspan="3"><%= link_to item.name, item_path(item), class: "link-black" %></td>
+        </tr>
+        <tr>
+          <td colspan="3"><%= item.price %> 円 (税抜)</td>
+        </tr>
+        <tr>
+          <td>数量: <%= order.quantity %></td>
+          <td>
+            <%= link_to "削除", orders_path(order), method: :delete, class: "btn btn-sm btn-secondary" %>
+          </td>
+          <td>小計: <%= order.quantity*item.price %> 円(税抜)</td>
+        </tr>
+        <% end %>
+      </table>
+    <% end %>
   </div>
 
 <%# 以下、フォームをレイアウトのみ仮で設置、送信はできません %>
