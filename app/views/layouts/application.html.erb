@@ -12,9 +12,9 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <div class="container-fluid py-4 <%= devise_controller? ? 'mw-md' : 'mw-xl' %>">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
       <% flash.each do |message_type, msg| %>
         <div class="alert alert-<%= message_type %>"><%= msg.html_safe %></div>
       <% end %>

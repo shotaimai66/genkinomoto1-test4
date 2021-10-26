@@ -2,19 +2,6 @@ class OrdersController < ApplicationController
   #skip_before_action :authenticate_user!
   skip_before_action :authenticate_staff!
 
-  def pay
-    item = Item.find(params[:format]) # to identify item by params[:format]
-    quantity = params[:item][:count].to_i
-    amount = item.price*quantity
-
-    Payjp.api_key = ENV["PAYJP_TEST_SECRET_KEY"]
-    charge = Payjp::Charge.create(
-    amount: amount,
-    card: params['payjp-token'],
-    currency: 'jpy'
-    )
-  end
-
   # カートが無い場合はカートを作成
   # User has_one Cart なので ".build_cart"を使う
   def create
@@ -27,14 +14,14 @@ class OrdersController < ApplicationController
     order = cart.orders.build(order_params)
     order.item = Item.find(params[:item][:item_id])
     order.save
-    flash[:success] = "#{order.item.name} をカートに追加しました。"
-    redirect_to items_path
+    flash[:success] = "#{order.item.name} がカートに追加されました。"
+    redirect_to carts_path
   end
 
   def destroy
     @order = Order.find(params[:format])
     @order.destroy
-    flash[:success] = "#{@order.item.name} をカートから削除しました。"
+    flash[:success] = "#{@order.item.name} がカートから削除されました。"
     redirect_to carts_path
   end
 
