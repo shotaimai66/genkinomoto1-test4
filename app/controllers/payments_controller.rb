@@ -40,7 +40,7 @@ class PaymentsController < ApplicationController
 
   def index
     #@payments = current_user.cart.payment.order(id: "DESC")
-    @payments = @q.result.page(params[:page]).per(5).order(id: "DESC")
+    @payments = @q.result.page(params[:page]).per(5).order(id: "DESC") if current_user.cart.payment.present?
   end
 
   def show
@@ -50,7 +50,7 @@ class PaymentsController < ApplicationController
   private
 
     def set_q
-      @q = current_user.cart.payment.ransack(params[:q])
+      @q = current_user.cart.payment.ransack(params[:q]) if current_user.cart.payment.present?
     end
 
 
