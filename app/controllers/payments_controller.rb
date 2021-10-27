@@ -1,6 +1,7 @@
 class PaymentsController < ApplicationController
     #skip_before_action :authenticate_user!
     skip_before_action :authenticate_staff!
+    before_action :set_q, only: [:index, :search]
 
   def pay
     orders = current_user.cart.orders.all
@@ -38,9 +39,19 @@ class PaymentsController < ApplicationController
   end
 
   def index
-    @payments = current_user.cart.payment.order(id: "DESC")
-    
+    #@payments = current_user.cart.payment.order(id: "DESC")
+    @payments = @q.result.page(params[:page]).per(5).order(id: "DESC")
   end
+
+  def show
+    @payment = Payment.find(params[:id])
+  end
+
+  private
+
+    def set_q
+      @q = current_user.cart.payment.ransack(params[:q])
+    end
 
 
 end

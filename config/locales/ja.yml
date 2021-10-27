@@ -220,6 +220,7 @@ ja:
       short: "%m/%d %H:%M"
       dayonly: "%m月%d日(%a)"
       timeonly: "%H:%M"
+      custom1: "%Y/%m/%d(%a) %H:%M"
     pm: 午後
   views:
       pagination:

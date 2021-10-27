@@ -36,8 +36,8 @@ Rails.application.routes.draw do
 
   resource :carts, only: %i[show]
   resource :orders, only: %i[create destroy]
-  resources :payments, only: %i[index]
+  resources :payments, only: %i[index show]
 
-  post 'payments', to: 'payments#pay'
+  post 'pay', to: 'payments#pay'
 
 end

@@ -2,26 +2,29 @@
 <%= link_to '商品一覧', items_path, class: "link-gray" %> ＞ 
 <%= link_to '戻る', :back, class: "link-gray" %>
 
-<div class="right">
-  <%= link_to image_tag('/cart_empty.png', width: 30), carts_path(current_user) %>
-  <%= link_to 'カート', carts_path(current_user), class: "btn btn-md btn-warning" %>
+<div class="container">
+  <div class="right">
+    <%= link_to image_tag('/payment_history.png', width: 30), payments_path(current_user) %>
+    <%= link_to '注文履歴', payments_path(current_user), class: "btn btn-md btn-secondary" %>
+    <%= link_to image_tag('/cart_empty.png', width: 30), carts_path(current_user) %>
+    <%= link_to 'カート', carts_path(current_user), class: "btn btn-md btn-warning" %>
+  </div>
+  <p></p>
+  <%= paginate @payments %>
+  <h1>注文履歴 【 <%= current_user.name %> 様 】</h1>
+  <table class="table">
+    <% @payments.each do |payment| %>
+    
+      <tr>
+        <td>注文日: <%= l payment.created_at, format: :custom1 %></td>
+        <td>合計: <%= payment.total %> 円(税込)</td>
+        <td>注文番号: <%= payment %></td>
+        <td><%= link_to "注文内容", payment_path(payment), class: "btn btn-sm btn-primary" %></td>
+      </tr>
+      <tr>
+        <td colspan="4"></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= paginate @payments %>
 </div>
-<p></p>
-<p>購入履歴</p>
-<table class="table">
-  <% @payments.each do |payment| %>
-  
-    <tr>
-      <td>注文日: <%= payment.created_at %></td>
-      <td>合計: <%= payment.total %> 円(税込)</td>
-      <td>注文番号: <%= payment %></td>
-      <td>注文内容表示</td>
-    </tr>
-    <tr>
-      <td>
-        <%=  %>
-      </td>
-      <td colspan="3"></td>
-    </tr>
-  <% end %>
-</table>
