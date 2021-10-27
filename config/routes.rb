@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     collection do
       get :confirm_reservation
     end
+    member do
+      get :edit_reserve
+      post :update_reserve
+    end
   end
   resources :stores
 
