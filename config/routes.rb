@@ -30,7 +30,6 @@ Rails.application.routes.draw do
   resources :items do
     collection do
       get 'search'
-      post 'pay' # 試験的支払い機能です
     end
   end
 
