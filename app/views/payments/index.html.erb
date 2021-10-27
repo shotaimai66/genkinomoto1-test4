@@ -1,0 +1,26 @@
+<%= link_to 'ホーム', root_url, class: "link-gray" %> ＞ 
+<%= link_to '商品一覧', items_path, class: "link-gray" %> ＞ 
+<%= link_to '戻る', :back, class: "link-gray" %>
+
+<div class="right">
+  <%= link_to image_tag('/cart_empty.png', width: 30), carts_path(current_user) %>
+  <%= link_to 'カート', carts_path(current_user), class: "btn btn-md btn-warning" %>
+</div>
+<p></p>
+<p>購入履歴</p>
+<table class="table">
+  <% @payments.each do |payment| %>
+    <tr>
+      <td>注文日: <%= payment.created_at %></td>
+      <td>合計: <%= payment.total %> 円(税込)</td>
+      <td>注文番号: <%= payment %></td>
+      <td>注文内容表示</td>
+    </tr>
+    <tr>
+      <td>
+        <%=  %>
+      </td>
+      <td colspan="3"></td>
+    </tr>
+  <% end %>
+</table>

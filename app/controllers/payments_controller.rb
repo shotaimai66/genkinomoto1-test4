@@ -37,5 +37,10 @@ class PaymentsController < ApplicationController
     redirect_to carts_path(current_user)
   end
 
+  def index
+    @payments = current_user.cart.payment
+    
+  end
+
 
 end

@@ -36,6 +36,7 @@ Rails.application.routes.draw do
 
   resource :carts, only: %i[show]
   resource :orders, only: %i[create destroy]
+  resources :payments, only: %i[index]
 
   post 'payments', to: 'payments#pay'
 

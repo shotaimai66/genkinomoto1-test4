@@ -3,8 +3,10 @@
 <%= link_to '戻る', :back, class: "link-gray" %>
 
 <div class="right">
-  <%= link_to image_tag('/cart_empty.png', width: 30), carts_path %>
-  <%= link_to 'カート', carts_path, class: "btn btn-md btn-warning" %>
+  <%= link_to image_tag('/payment_history.png', width: 30), payments_path(current_user) %>
+  <%= link_to '注文履歴', payments_path(current_user), class: "btn btn-md btn-secondary" %>
+  <%= link_to image_tag('/cart_empty.png', width: 30), carts_path(current_user) %>
+  <%= link_to 'カート', carts_path(current_user), class: "btn btn-md btn-warning" %>
 </div>
 <p></p>
 <div class="container">
