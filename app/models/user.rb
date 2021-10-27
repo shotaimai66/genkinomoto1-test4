@@ -35,4 +35,9 @@ class User < ApplicationRecord
     self.save!
   end
   # line-login関連ここまで
+
+  # 退会済みなら認証しない
+  def active_for_authentication?
+    super && (self.flag == false)
+  end
 end
