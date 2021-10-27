@@ -55,21 +55,6 @@ class ItemsController < ApplicationController
     redirect_to items_path(current_user)
   end
 
-  # 以下、決済機能を試験的に導入
-  def pay
-    item = Item.find(params[:format]) # to identify item by params[:format]
-    quantity = params[:item][:quantity].to_i
-    amount = item.price*quantity
-
-    Payjp.api_key = ENV["PAYJP_TEST_SECRET_KEY"]
-    charge = Payjp::Charge.create(
-    amount: amount,
-    card: params['payjp-token'],
-    currency: 'jpy'
-    )
-  end
-  # 試験的決済機能ここまで
-
   private
     def item_params
       params.require(:item).permit(:name, :price, :description, :stock, :image)

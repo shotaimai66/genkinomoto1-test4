@@ -10,6 +10,7 @@
 <p>購入履歴</p>
 <table class="table">
   <% @payments.each do |payment| %>
+  
     <tr>
       <td>注文日: <%= payment.created_at %></td>
       <td>合計: <%= payment.total %> 円(税込)</td>

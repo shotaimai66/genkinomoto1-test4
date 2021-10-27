@@ -38,7 +38,7 @@ class PaymentsController < ApplicationController
   end
 
   def index
-    @payments = current_user.cart.payment
+    @payments = current_user.cart.payment.order(id: "DESC")
     
   end
 
