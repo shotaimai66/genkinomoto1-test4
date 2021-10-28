@@ -20,7 +20,7 @@ class PaymentsController < ApplicationController
     end
     total = subtotal+tax+shipping_fee
 
-    payment = current_user.cart.payment.new
+    payment = current_user.cart.payments.new
     payment.subtotal = subtotal
     payment.tax = tax
     payment.shipping_fee = shipping_fee
@@ -39,8 +39,8 @@ class PaymentsController < ApplicationController
   end
 
   def index
-    #@payments = current_user.cart.payment.order(id: "DESC")
-    @payments = @q.result.page(params[:page]).per(5).order(id: "DESC") if current_user.cart.payment.present?
+    #@payments = current_user.cart.payments.order(id: "DESC")
+    @payments = @q.result.page(params[:page]).per(5).order(id: "DESC") if current_user.cart.payments.present?
   end
 
   def show
@@ -50,7 +50,7 @@ class PaymentsController < ApplicationController
   private
 
     def set_q
-      @q = current_user.cart.payment.ransack(params[:q]) if current_user.cart.payment.present?
+      @q = current_user.cart.payments.ransack(params[:q]) if current_user.cart.payments.present?
     end
 
 

@@ -1,0 +1,142 @@
+# Query: payment
+# ContextLines: 1
+
+61 件の結果 - 14 ファイル
+
+app/assets/stylesheets/payments.scss:
+  1: // Place all the styles related to the payments controller here.
+  2  // They will automatically be included in application.css.
+
+app/controllers/payments_controller.rb:
+   1: class PaymentsController < ApplicationController
+   2      #skip_before_action :authenticate_user!
+
+  22  
+  23:     payment = current_user.cart.payments.new
+  24:     payment.subtotal = subtotal
+  25:     payment.tax = tax
+  26:     payment.shipping_fee = shipping_fee
+  27:     payment.total = total
+  28:     payment.save
+  29  
+
+  41    def index
+  42:     #@payments = current_user.cart.payment.order(id: "DESC")
+  43:     @payments = @q.result.page(params[:page]).per(5).order(id: "DESC") if current_user.cart.payments.present?
+  44    end
+
+  46    def show
+  47:     @payment = Payment.find(params[:id])
+  48    end
+
+  52      def set_q
+  53:       @q = current_user.cart.payments.ransack(params[:q]) if current_user.cart.payments.present?
+  54      end
+
+app/helpers/payments_helper.rb:
+  1: module PaymentsHelper
+  2  end
+
+app/models/cart.rb:
+  6    has_many :items, through: :orders # A cart has many items through orders.
+  7:   has_many :payments
+  8    
+
+app/models/payment.rb:
+  1: class Payment < ApplicationRecord
+  2    belongs_to :cart
+
+app/views/carts/show.html.erb:
+  49  <div class="right">
+  50:   <%= link_to image_tag('/payment_history.png', width: 30), payments_path(current_user) %>
+  51:   <%= link_to '注文履歴', payments_path(current_user), class: "btn btn-md btn-secondary" %>
+  52    <% if current_user.cart.orders.present? %>
+
+  69              <% else %>
+  70:               <%= form_with model: @payment, url: pay_path(@payment), method: :post do |f| %>
+  71                  <script
+
+app/views/items/index.html.erb:
+  16  <div class="right">
+  17:   <%= link_to image_tag('/payment_history.png', width: 30), payments_path(current_user) %>
+  18:   <%= link_to '注文履歴', payments_path(current_user), class: "btn btn-md btn-secondary" %>
+  19    <% if current_user.cart.orders.present? %>
+
+app/views/items/show.html.erb:
+  5  <div class="right">
+  6:   <%= link_to image_tag('/payment_history.png', width: 30), payments_path(current_user) %>
+  7:   <%= link_to '注文履歴', payments_path(current_user), class: "btn btn-md btn-secondary" %>
+  8    <% if current_user.cart.orders.present? %>
+
+app/views/payments/index.html.erb:
+   6    <div class="right">
+   7:   <%= link_to image_tag('/payment_history.png', width: 30), payments_path(current_user) %>
+   8:   <%= link_to '注文履歴', payments_path(current_user), class: "btn btn-md btn-secondary" %>
+   9    <% if current_user.cart.orders.present? %>
+
+  17  
+  18:   <% if current_user.cart.payments.present? %>
+  19:     <%= paginate @payments %>
+  20      <h1>注文履歴 【 <%= current_user.name %> 様 】</h1>
+  21      <table class="table">
+  22:       <% @payments.each do |payment| %>
+  23        
+  24          <tr>
+  25:           <td>注文日: <%= l payment.created_at, format: :custom1 %></td>
+  26:           <td>合計: <%= payment.total %> 円(税込)</td>
+  27:           <td>注文番号: <%= payment %></td>
+  28:           <td><%= link_to "注文内容", payment_path(payment), class: "btn btn-sm btn-primary" %></td>
+  29          </tr>
+
+  34      </table>
+  35:     <%= paginate @payments %>
+  36    <% else %>
+
+app/views/payments/show.html.erb:
+   6    <div class="right">
+   7:     <%= link_to image_tag('/payment_history.png', width: 30), payments_path(current_user) %>
+   8:     <%= link_to '注文履歴', payments_path(current_user), class: "btn btn-md btn-secondary" %>
+   9      <% if current_user.cart.orders.present? %>
+
+  20      <tr>
+  21:       <td>注文日: <%= l @payment.created_at, format: :custom1 %></td>
+  22:       <td>注文番号: <%= @payment %></td>
+  23      </tr>
+
+  43        <td class="right">
+  44:         <%= @payment.subtotal %> 円<br>
+  45:         <%= @payment.tax %> 円<br>
+  46:         <%= @payment.shipping_fee %> 円<br>
+  47:         <%= @payment.total %> 円<br>
+  48        </td>
+
+config/routes.rb:
+  41    resource :orders, only: %i[create destroy]
+  42:   resources :payments, only: %i[index show]
+  43  
+  44:   post 'pay', to: 'payments#pay'
+  45  
+
+config/initializers/permissions_policy.rb:
+   9  #   f.fullscreen  :self
+  10: #   f.payment     :self, "https://secure.example.com"
+  11  # end
+
+db/schema.rb:
+   46  
+   47:   create_table "payments", force: :cascade do |t|
+   48      t.bigint "cart_id", null: false
+
+   54      t.datetime "updated_at", precision: 6, null: false
+   55:     t.index ["cart_id"], name: "index_payments_on_cart_id"
+   56    end
+
+  131    add_foreign_key "orders", "items"
+  132:   add_foreign_key "payments", "carts"
+  133    add_foreign_key "staffs", "stores"
+
+db/migrate/20211026092315_create_payments.rb:
+  1: class CreatePayments < ActiveRecord::Migration[6.1]
+  2    def change
+  3:     create_table :payments do |t|
+  4        t.references :cart, null: false, foreign_key: true

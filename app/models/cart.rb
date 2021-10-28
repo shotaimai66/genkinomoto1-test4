@@ -4,7 +4,7 @@ class Cart < ApplicationRecord
   # A cart has many orders.
   has_many :orders
   has_many :items, through: :orders # A cart has many items through orders.
-  has_many :payment
+  has_many :payments
   
 
 
