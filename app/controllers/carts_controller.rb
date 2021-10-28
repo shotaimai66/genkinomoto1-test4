@@ -3,7 +3,7 @@ class CartsController < ApplicationController
   skip_before_action :authenticate_staff!
   
   def show
-    @orders = current_user.cart.orders.all
+    @orders = current_user.cart.orders.where(paid_at: nil)
     @subtotal = 0
     # @sumに合計金額を代入する
     @orders.each do |order|

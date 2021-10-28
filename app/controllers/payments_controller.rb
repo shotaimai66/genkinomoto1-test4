@@ -4,7 +4,8 @@ class PaymentsController < ApplicationController
     before_action :set_q, only: [:index, :search]
 
   def pay
-    orders = current_user.cart.orders.all
+    orders = current_user.cart.orders.where(paid_at: nil)
+    
     subtotal = 0
     # @sumに合計金額を代入する
     orders.each do |order|
@@ -33,7 +34,12 @@ class PaymentsController < ApplicationController
     card: params['payjp-token'],
     currency: 'jpy'
     )
-    orders.destroy_all
+
+    orders.each do |order|
+      order.paid_at = Time.current
+      order.save
+    end
+    
     flash[:success] = "決済が完了しました。お買い上げ誠にありがとうございます。"
     redirect_to carts_path(current_user)
   end

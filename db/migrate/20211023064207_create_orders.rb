@@ -4,6 +4,7 @@ class CreateOrders < ActiveRecord::Migration[6.1]
       t.references :item, null: false, foreign_key: true
       t.references :cart, null: false, foreign_key: true
       t.integer :quantity
+      t.datetime :paid_at
 
       t.timestamps
     end
