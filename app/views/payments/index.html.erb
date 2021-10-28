@@ -21,15 +21,33 @@
     <h1>注文履歴 【 <%= current_user.name %> 様 】</h1>
     <table class="table">
       <% @payments.each do |payment| %>
-      
+      <thead>
         <tr>
-          <td>注文日: <%= l payment.created_at, format: :custom1 %></td>
-          <td>合計: <%= payment.total %> 円(税込)</td>
-          <td>注文番号: <%= payment %></td>
-          <td><%= link_to "注文内容", payment_path(payment), class: "btn btn-sm btn-primary" %></td>
+          <th style="width: 20%">注文日時:<br><%= l payment.created_at, format: :custom1 %></th>
+          <th style="width: 40%">合計:<br><%= payment.total %> 円(税込)</th>
+          <th style="width: 15%">注文番号: <%= payment.id %></th>
+          <th colspan="2"  class="center"  style="width: 25%"><%= link_to "注文内容", payment_path(payment), class: "btn btn-sm btn-primary" %></th>
         </tr>
+      </thead>
+        <% orders = Order.where(payment_id: payment.id) %>
+          <% orders.each do |order| %>
+          <tr>
+            <td class="center">
+              <% item = Item.find(order.item_id) %>
+              <% if item.image? %>
+                <%= link_to image_tag(item.image.url, width: 50, class: "item-image-border"), item_path(item) %>
+              <% else %>
+                <%= link_to image_tag("/no_image2.png", width: 50, class: "item-image-border"), item_path(item) %>
+              <% end %>
+            </td>
+            <td><%= link_to item.name, item_path(item), class: "link-black" %></td>
+            <td><%= item.price %> 円(税抜)</td>
+            <td>数量: <%= order.quantity %></td>
+            <td><%= item.price*order.quantity %> 円(税抜)</td>
+          </tr>
+          <% end %>
         <tr>
-          <td colspan="4"></td>
+          <td colspan="5"></td>
         </tr>
       <% end %>
     </table>
