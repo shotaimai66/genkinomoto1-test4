@@ -37,6 +37,7 @@ class PaymentsController < ApplicationController
 
     orders.each do |order|
       order.paid_at = Time.current
+      order.payment_id = payment.id
       order.save
     end
     
@@ -51,6 +52,7 @@ class PaymentsController < ApplicationController
 
   def show
     @payment = Payment.find(params[:id])
+    @orders = Order.where(payment_id: @payment.id)
   end
 
   private
