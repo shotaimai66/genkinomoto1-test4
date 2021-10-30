@@ -5,7 +5,7 @@
     <%= render "users/shared/error_messages", resource: resource %>
 
     <div class="field">
-      <%= f.label :name %><br />
+      <span class="required"><%= f.label :name %></span><br />
       <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "山田太郎" %>
     </div>
 
@@ -15,7 +15,7 @@
     </div>
 
     <div class="field">
-      <%= f.label :email %><br />
+      <span class="required"><%= f.label :email %></span><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "email@eamil.com" %>
     </div>
 

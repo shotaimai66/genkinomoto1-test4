@@ -15,10 +15,11 @@ class UsersController < ApplicationController
   end
 
   def out
-    user = current_user # 情報を入れる
-    user.update(flag: true) # flagをtrueへ
-    reset_session # データをリセットする
-    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
-    redirect_to root_path # トップ画面へ
+    user = current_user
+    if user.update(flag: true, exit_date: Time.now)
+      reset_session # データをリセットする
+      flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+      redirect_to root_path
+    end
   end
 end

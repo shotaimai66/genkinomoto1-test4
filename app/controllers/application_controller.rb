@@ -30,7 +30,8 @@ class ApplicationController < ActionController::Base
         :prefecture_code,
         :city,
         :street,
-        :other_address
+        :other_address,
+        :exit_date
         ])
     end
 end
