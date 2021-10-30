@@ -43,6 +43,17 @@ class Reservation < ApplicationRecord
     )
   end
 
+  def apply_reserve!
+    end_time = start_time + end_time_calculate
+    title_for_staff_comment = "予約確定 #{self.guest.email}様　#{self.course_i18n}"
+    self.update(
+      end_time: end_time,
+      status: :on_reserve,
+      title_for_guest: "予約確定",
+      title_for_staff: title_for_staff_comment
+    )
+  end
+
   def end_time_calculate
     if self.course_default?
       60 * 60
@@ -64,6 +75,10 @@ class Reservation < ApplicationRecord
       60 * 60
     end
   end
+
+  scope :from_today, -> () {
+    where('start_time >= ?', Time.zone.now)
+  }
 
   # #指定された配列日付のデータを抽出
   # scope :in_selected_days, -> (days) {
