@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   # belongs_to :store
   has_many :reservations
+  include JpPrefecture
+  jp_prefecture :prefecture_code
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable
   devise :database_authenticatable, :registerable,
@@ -9,8 +11,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :kana, length: { maximum: 50 }
-  enum sex: { male: 0, female: 1 }
-
+  enum sex: { male: 0, female: 1, no_select: 2 }
 
   # line-login関連ここから
   def social_profile(provider)
@@ -34,4 +35,9 @@ class User < ApplicationRecord
     self.save!
   end
   # line-login関連ここまで
+
+  # 退会済みなら認証しない
+  def active_for_authentication?
+    super && (self.flag == false)
+  end
 end
