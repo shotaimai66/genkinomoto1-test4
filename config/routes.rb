@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   
   root 'static_pages#top'
-
   resources :reservations do
     collection do
       get :confirm_reservation
@@ -12,7 +11,6 @@ Rails.application.routes.draw do
     end
   end
   resources :stores
-
   get 'users/index'
   devise_for :users, controllers: {
     sessions:      'users/sessions',
@@ -25,22 +23,16 @@ Rails.application.routes.draw do
     passwords:     'staffs/passwords',
     registrations: 'staffs/registrations'
   }
-
   resources :staffs, only: %i[index]
-
   resources :reservations
   resources :stores
-
   resources :items do
     collection do
       get 'search'
     end
   end
-
   resource :carts, only: %i[show]
   resource :orders, only: %i[create destroy]
   resources :payments, only: %i[index show]
-
   post 'pay', to: 'payments#pay'
-
 end
