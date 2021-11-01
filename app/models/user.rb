@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   # belongs_to :store
   has_many :reservations
+  # A user has only one cart. User > Cart > Orders (join table) > Items
+  # dependent: :destroyは未設定なので、Userが削除されてもCartは残る
+  has_one :cart
   include JpPrefecture
   jp_prefecture :prefecture_code
   # Include default devise modules. Others available are:
