@@ -60,6 +60,4 @@ class PaymentsController < ApplicationController
     def set_q
       @q = current_user.cart.payments.ransack(params[:q]) if current_user.cart.payments.present?
     end
-
-
 end
