@@ -1,14 +1,12 @@
 <%= link_to 'ホーム', root_url, class: "link-gray" %>
 
 <div class="container">
-
   <div class="center">
     <%= search_form_for @q, url: search_items_path do |f| %>
       <%= f.search_field :name_cont, class: "search-container" %>
       <%= f.submit '商品検索' %>
     <% end %>
   </div>
-
   <div class="right">
     <%= link_to "新規商品登録", new_item_path, class: "btn btn-md btn-info"%>
   </div>
@@ -24,8 +22,6 @@
     <% end %>
     <%= link_to 'カート', carts_path(current_user), class: "btn btn-md btn-warning" %>
   </div>
-
-
   <%= paginate @items %>
   <table class="table">
     <thead>
@@ -35,7 +31,6 @@
         <th><%= sort_link(@q, :price, "↑↓") %></th>
         <th><%= sort_link(@q, :stock, "↑↓") %></th>
         <th colspan="2">従業員欄</th>
-        
       </tr>
     </thead>
     <% @items.each do |item| %>
@@ -51,7 +46,6 @@
         <td><%= link_to item.name, item_path(item), class: "link-black" %></td>
         <td><%= item.price %> 円 (税抜)</td>
         <td>在庫数: <%= item.stock %></td>
-      
         <td><%= link_to '編集', edit_item_path(item), class: 'btn btn-sm btn-primary' %></td>
         <td><%= link_to '削除', item_path(item), method: :delete, data: { confirm: '削除してもよろしいでしょうか?' }, class: "btn btn-sm btn-danger" %></td>
       </tr>
@@ -59,9 +53,4 @@
     <% end %>
   </table>
   <%= paginate @items %>
-
 </div>
-
-
-
-
