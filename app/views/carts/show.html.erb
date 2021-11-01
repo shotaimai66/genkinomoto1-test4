@@ -3,8 +3,6 @@
 <%= link_to '戻る', :back, class: "link-gray" %>
 
 <div class="container">
-
-
   <div class="cart-wrapper">
     <div class="cart-content-left">
       <h1>ショッピングカート 【 <%= current_user.name %> 様 】</h1>
@@ -44,7 +42,6 @@
         </table>
       <% end %>
     </div>
-
     <div class="cart-content-right">
 <div class="right">
   <%= link_to image_tag('/payment_history.png', width: 30), payments_path(current_user) %>
@@ -86,4 +83,3 @@
     </div>
   </div>
 </div>
-
