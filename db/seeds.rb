@@ -27,7 +27,6 @@
     )
 end
 
-
 User.create!(
   name: "Sample User1",
   email: "sample-1@email.com",
@@ -41,8 +40,3 @@ Staff.create!(
   password: "password",
   password_confirmation: "password"
 )
-
-
-
-
-
