@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2021_10_26_092315) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -116,13 +118,17 @@ ActiveRecord::Schema.define(version: 2021_10_26_092315) do
     t.string "kana"
     t.integer "sex"
     t.datetime "birthday"
-    t.string "address"
     t.datetime "enter_date"
     t.datetime "exit_date"
     t.boolean "flag", default: false, null: false
     t.bigint "store_id"
     t.string "provider"
     t.string "uid"
+    t.integer "postal_code"
+    t.string "prefecture_code"
+    t.string "city"
+    t.string "street"
+    t.string "other_address"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["store_id"], name: "index_users_on_store_id"

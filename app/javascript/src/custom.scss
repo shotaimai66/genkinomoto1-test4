@@ -235,6 +235,7 @@ h1 {
   background-color: #fff;
 }
 
+
 .cart-wrapper {
   display: flex;
   align-items: baseline; // position stickyに必要
@@ -262,3 +263,14 @@ h1 {
 .table-striped {
   border: 1px solid lightgray;
 }
+
+.required::after {
+  content: "必須";
+  color: #ffffff;
+  background: #cc0000;
+  font-size: 0.8em;
+  padding: 0.3em;
+  border-radius: 0.5em;
+  margin-left:0.3em;
+  }
+

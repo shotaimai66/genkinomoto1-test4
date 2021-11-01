@@ -18,6 +18,15 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     omniauth_callbacks: "omniauth_callbacks"
   }
+  scope modules: :users do
+    resource :users,only: [:edit, :update, :show] do
+      collection do
+        get 'quit' # 退会画面
+        patch 'out' # flagを更新し、会員からはログインできなくする
+      end
+    end
+  end
+
   devise_for :staffs, controllers: {
     sessions:      'staffs/sessions',
     passwords:     'staffs/passwords',
