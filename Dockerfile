@@ -14,7 +14,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
   postgresql-client
 
 WORKDIR /app
-COPY . /app
+
 COPY Gemfile Gemfile.lock /app/
 
 RUN bundle install
