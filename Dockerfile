@@ -16,8 +16,13 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 WORKDIR /app
 
 COPY Gemfile Gemfile.lock /app/
-
 RUN bundle install
+COPY . /app
+
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
+EXPOSE 3000
 
 # 本番環境用に追加
 COPY start.sh /start.sh
