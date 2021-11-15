@@ -1,3 +1,28 @@
+# ローカル開発用
+# default: &default
+#   adapter: postgresql
+#   encoding: unicode
+#   host: db
+#   user: postgres
+#   port: 5432
+#   password: <%= ENV.fetch("DATABASE_PASSWORD") %>
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+# development:
+#   <<: *default
+#   database: product_register_development
+
+# test:
+#   <<: *default
+#   database: product_register_test
+
+# production:
+#   <<: *default
+#   database: product_register_production
+#   username: product_register
+#   password: <%= ENV['PRODUCT_REGISTER_DATABASE_PASSWORD'] %>
+
+#本番環境用
 default: &default
   adapter: postgresql
   encoding: unicode
