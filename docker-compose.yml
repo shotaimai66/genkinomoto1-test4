@@ -23,6 +23,7 @@ services:
       - '/app/.git'
     environment:
       - 'DATABASE_PASSWORD=postgres'
+      - 'RAILS_ENV=production'
     tty: true
     stdin_open: true
     depends_on:

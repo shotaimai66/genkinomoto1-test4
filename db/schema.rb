@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2021_10_26_092315) do
-
+ActiveRecord::Schema.define(version: 10) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,7 +82,6 @@ ActiveRecord::Schema.define(version: 2021_10_26_092315) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "store_id"
     t.integer "authority"
     t.string "name"
     t.string "kana"
@@ -94,6 +91,7 @@ ActiveRecord::Schema.define(version: 2021_10_26_092315) do
     t.datetime "enter_date"
     t.datetime "exit_date"
     t.boolean "flag", default: false
+    t.bigint "store_id"
     t.index ["email"], name: "index_staffs_on_email", unique: true
     t.index ["reset_password_token"], name: "index_staffs_on_reset_password_token", unique: true
     t.index ["store_id"], name: "index_staffs_on_store_id"
@@ -121,7 +119,6 @@ ActiveRecord::Schema.define(version: 2021_10_26_092315) do
     t.datetime "enter_date"
     t.datetime "exit_date"
     t.boolean "flag", default: false, null: false
-    t.bigint "store_id"
     t.string "provider"
     t.string "uid"
     t.integer "postal_code"
@@ -129,6 +126,7 @@ ActiveRecord::Schema.define(version: 2021_10_26_092315) do
     t.string "city"
     t.string "street"
     t.string "other_address"
+    t.bigint "store_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["store_id"], name: "index_users_on_store_id"
